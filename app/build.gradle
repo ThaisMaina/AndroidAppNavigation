@@ -28,6 +28,11 @@ android {
     buildFeatures {
         dataBinding true
     }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
     defaultConfig {
         applicationId 'com.example.android.navigation'
         minSdkVersion 19
@@ -35,6 +40,7 @@ android {
         vectorDrawables.useSupportLibrary = true
         versionCode 1
         versionName "1.0"
+
     }
     buildTypes {
         release {
