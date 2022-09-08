@@ -36,7 +36,7 @@ class GameWonFragment : Fragment() {
                 inflater, R.layout.fragment_game_won, container, false)
 
         binding.nextMatchButton.setOnClickListener {view: View ->
-            view.findNavController().navigate(R.id.action_gameFragment_to_gameWonFragment)
+            view.findNavController().navigate(GameWonFragmentDirections.actionGameWonFragmentToGameFragment())
         }
         setHasOptionsMenu(true)
 
@@ -59,9 +59,9 @@ class GameWonFragment : Fragment() {
 
     // Creating our Share Intent
     private fun getShareIntent() : Intent {
-        val args = GameWonFragmentArgs.fromBundle(arguments!!)
+        val args = arguments?.let { GameWonFragmentArgs.fromBundle(it) }
         return ShareCompat.IntentBuilder.from(activity!!)
-            .setText(getString(R.string.share_success_text, args.numCorrect, args.numQuestions))
+            .setText(getString(R.string.share_success_text, args?.numCorrect, args?.numQuestions))
             .setType("text/plain")
             .intent
     }
